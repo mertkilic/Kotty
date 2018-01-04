@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.mert.gettykotlin"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    supportVersion = '26.1.0'
+    retrofitVersion = '2.3.0'
+    gsonVersion = '2.8.1'
+    daggerVersion = '2.13'
+    picassoVersion = "2.5.2"
+    butterknifeVersion = "8.8.1"
+    rxAndroidVersion = "2.0.1"
+    rxJavaVersion = "2.2.0"
+    archComponents = "1.0.0"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+
+    /*implementation "android.arch.lifecycle:extensions:$archComponents"
+    implementation "android.arch.lifecycle:extensions:$archComponents"
+    implementation "android.arch.lifecycle:reactivestreams:$archComponents"
+    kapt "android.arch.lifecycle:compiler:$archComponents"*/
+
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    //dagger
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt 'com.google.dagger:dagger-compiler:2.13'
+    kapt 'com.google.dagger:dagger-android-processor:2.13'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
